@@ -3,17 +3,69 @@
 <head>
 	<meta charset="utf-8">
 	<script>
-		// TODO: create a handler
-    window.addEventListener("load", function(){
-        // TODO: register the handler
-    });
+		// const actions = {
+		// 	google: "https://www.google.com/search",
+		// 	bing:  "https://www.bing.com/search",
+		// 	duckDuckGo: "https://duckduckgo.com/",
+		// 	ask: "https://www.ask.com/web"
+		// }
+		// const setSearchEngine = () => {
+		// 	let engineInput = document.querySelector("input[name=engine]:checked");
+		// 	return engineInput.value;
+		// }
+   	 	// window.addEventListener("load", function(){
+		// 	const form = document.querySelector("form");
+        // 	form.addEventListener("submit", () => {
+		// 		let engine = setSearchEngine();
+		// 		form.setAttribute("action", actions[engine]);
+		// 	});
+		//  });
+
+		const init = () => {
+			const form = document.querySelector("form");
+			const actions = {
+				google: "https://www.google.com/search",
+				bing:  "https://www.bing.com/search",
+				duckDuckGo: "https://duckduckgo.com/",
+				ask: "https://www.ask.com/web"
+			};
+			form.addEventListener("submit", (event) => {
+				let engineInput = document.querySelector("input[name=engine]:checked");
+				let engine = engineInput.value;
+				form.setAttribute("action", actions[engine]);
+			})
+		};
+
+		window.addEventListener("load", init);
 	</script>
 </head>
 
 <body>
 
 	<form id="searchForm">
-    <!-- TODO: add form elements -->
+	<input type="text" name=q>
+    <label> Google
+		<input type="radio" name=engine value="google">
+	</label>
+	<label> DuckDuckGo
+		<input type="radio" name=engine value="duckDuckGo">
+	</label>
+	<label> Bing
+		<input type="radio" name=engine value="bing">
+	</label>
+	<label> Ask
+		<input type="radio" name=engine value="ask">
+	</label>
+	<input type="submit" value="Go!">
 	</form>
 
 </body>
+
+<!-- Google	google	https://www.google.com/search
+DuckDuckGo	duckDuckGo	https://duckduckgo.com/
+Bing	bing	https://www.bing.com/search
+Ask	ask	https://www.ask.com/web
+Create a text input within the form and set its name attribute to the value "q".
+Create a radio group with one radio button for each search engine. Recall that radio buttons with the same name are grouped, so use the same value for this attribute, "engine", on each radio button.
+Create a label element for each radio button.
+Finally, add a submit button to the form and set it's value to "Go!". -->
